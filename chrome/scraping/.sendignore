@@ -6,8 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# dataset/
-
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -70,10 +68,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-.env.test
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -105,9 +99,7 @@ dist
 # TernJS port file
 .tern-port
 
-# screenshot/*
-# !screenshot/.gitkeep
-
-
-crawled-data/*
-!crawled-data/.gitkeep
+# Original
+.sendignore
+send.sh
+.git
