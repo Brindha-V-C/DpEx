@@ -37,11 +37,8 @@ Visit the Extensions page by typing opera://extensions in a new tab, or utilize 
 
 Tech Stack Used:-
 
-1. NLP model- Logistic Regression, SVM, Random Forest, Gradient Boosting
-2. Web Extension- HTML, CSS, JS
-3. Deep Learning Python Frameworks: Pytorch, Tensorflow, Keras.
-4. Hardware: 16 GB RAM, Intel i5 12th gen 512 SSD, Windows OS/ MAC OS- M2 pro
-5. IDE- VS code
-6. Dataset Information: The dataset.tsv file located in this directory serves as the dataset for automatically detecting text-based dark patterns.
-7. We have done experimental code of baseline evaluation using classical NLP methods and transformer-based pre-trained language models.
-8. Scraping Section: This directory contains the code designed to gather non-dark pattern texts for inclusion in the dataset.
+1. Web Extension- HTML, CSS, JS
+2. Hardware: 16 GB RAM, Intel i5 12th gen 512 SSD, Windows OS/ MAC OS- M2 pro
+3. IDE- VS code
+4. Dataset Information: The dataset.tsv file located in this directory serves as the dataset for automatically detecting text-based dark patterns.
+5. Scraping Section: This directory contains the code designed to gather non-dark pattern texts for inclusion in the dataset.
