@@ -5,7 +5,7 @@ import * as constants from "../scripts/constants.js";
 import { LitElement, html, css } from '../scripts/lit/lit-core.min.js';
 
 // Import component styles
-import { onOffSwitchStyles, sharedStyles, actionButtonStyles, patternsListStyles, patternLinkStyles } from "./styles.js";
+import {sharedStyles, actionButtonStyles, patternsListStyles, patternLinkStyles } from "./styles.js";
 
 /**
  * The object to access the API functions of the browser.
@@ -158,7 +158,6 @@ export class ExtensionPopup extends LitElement {
             <redo-button .activation=${this.initActivation}></redo-button>
             <found-patterns-list .activation=${this.initActivation} .results=${this.results}></found-patterns-list>
             <show-pattern-button .activation=${this.initActivation} .results=${this.results}></show-pattern-button>
-            <supported-patterns-list></supported-patterns-list>
             <popup-footer></popup-footer>
         `;
     }
@@ -196,61 +195,7 @@ export class PopupHeader extends LitElement {
 // Define a custom element for the component so that it can be used in the HTML DOM.
 customElements.define("popup-header", PopupHeader);
 
-/**
- * Lit component for the on/off switch of the popup.
- * @extends LitElement
- */
-export class OnOffSwitch extends LitElement {
-    // Reactive properties
-    static properties = {
-        // Variable for the activation state of the component.
-        activation: { type: Number },
-        // Variable for the reference to the parent component.
-        app: { type: Object }
-    };
 
-    // CSS styles for the HTML elements in the component.
-    static styles = [
-        sharedStyles,
-        onOffSwitchStyles
-    ];
-
-    /**
-     * Function that handles a change of the on/off switch value.
-     * @param {Event} event
-     */
-    async changeActivation(event) {
-        if (this.activation !== activationState.PermanentlyOff) {
-            if (this.activation === activationState.Off) {
-                this.activation = activationState.On;
-            } else {
-                this.activation = activationState.Off;
-            }
-            this.app.activation = this.activation;
-        }
-    }
-
-    /**
-     * Render the HTML of the component.
-     * @returns {html} HTML of the component
-     */
-    render() {
-        return html`
-        <div>
-            <input type="checkbox" id="main-onoffswitch" tabindex="0"
-                @change=${this.changeActivation}
-                .checked=${this.activation === activationState.On}
-                .disabled=${this.activation === activationState.PermanentlyOff} />
-            <label for="main-onoffswitch">
-                <span class="onoffswitch-inner"></span>
-                <span class="onoffswitch-switch"></span>
-            </label>
-        </div>
-      `;
-    }
-}
-// Define a custom element for the component so that it can be used in the HTML DOM.
-customElements.define("on-off-switch", OnOffSwitch);
 
 /**
  * Lit component for the refresh button of the popup.
@@ -614,52 +559,9 @@ export class ShowPatternButtons extends LitElement {
 // Define a custom element for the component so that it can be used in the HTML DOM.
 customElements.define("show-pattern-button", ShowPatternButtons);
 
-/**
- * Lit component for the list of all supported patterns in the popup.
- * @extends LitElement
- */
-export class SupportedPatternsList extends LitElement {
-    // CSS styles for the HTML elements in the component.
-    static styles = [
-        sharedStyles,
-        patternsListStyles,
-        patternLinkStyles,
-        css`
-            div {
-                margin: 2.5em 0 1em;
-            }
-        `
-    ];
 
-    /**
-     * Render the HTML of the component.
-     * @returns {html} HTML of the component
-     */
-    render() {
-        return html`
-        <div>
-            <h2>${brw.i18n.getMessage("headingSupportedPatterns")}</h2>
-            <ul>
-                ${constants.patternConfig.patterns.map((pattern) =>
-            html`
-                    <li title="${pattern.info}">
-                        <a href="${pattern.infoUrl}" target="_blank">
-                            ${pattern.name} (${pattern.languages.map(l => l.toUpperCase()).join(", ")})
-                        </a>
-                    </li>`
-        )}
-            </ul>
-        </div>
-      `;
-    }
-}
-// Define a custom element for the component so that it can be used in the HTML DOM.
-customElements.define("supported-patterns-list", SupportedPatternsList);
 
-/**
- * Lit component for footer of the popup.
- * @extends LitElement
- */
+
 export class PopupFooter extends LitElement {
     // CSS styles for the HTML elements in the component.
     static styles = [
@@ -683,3 +585,12 @@ export class PopupFooter extends LitElement {
 }
 // Define a custom element for the component so that it can be used in the HTML DOM.
 customElements.define("popup-footer", PopupFooter);
+document.addEventListener('DOMContentLoaded', function() {
+    let settingsButton = document.querySelector('.settings-button');
+
+    settingsButton.addEventListener('click', function() {
+        // Open the settings page in a new popup window
+        chrome.windows.create({url: "popup/settings.html", type: "popup", width: 500, height: 500});
+    });
+});
+
