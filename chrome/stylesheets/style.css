@@ -1,12 +1,11 @@
 .__ph__pattern-detected {
-    /** background-color: red !important; **/
-    border: 2px solid rgb(0, 0, 0) !important;
+    border: 2px solid rgb(252, 0, 0) !important;
 }
 
 .__ph__current-pattern {
     z-index: 10000 !important;
     box-shadow: 0 0 0 25px rgb(2, 252, 73);
-    animation: __ph__highlight 5s;
+    animation: __ph__highlight 8s;
     opacity: 0;
     position: relative; /* Add this to position the pseudo-element relative to this element */
 }
