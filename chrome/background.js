@@ -184,7 +184,7 @@ let icons_disabled = {};
 
 // Generate the paths to the gray version of the icon using the paths of the default icon.
 for (let resolution in icons_default) {
-    icons_disabled[resolution] = `${icons_default[resolution].slice(0, -4)}_grey.png`;
+    icons_disabled[resolution] = `${icons_default[resolution].slice(0, -4)}.png`;
 }
 
 // Add an event handler that processes updates from tabs.
@@ -235,3 +235,15 @@ function displayPatternCount(count, tabId) {
         color: bgColor
     });
 }
+brw.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.message === "open_new_tab") {
+        brw.tabs.query({active: true, lastFocusedWindow: true}, function(tabs) {
+            let url = tabs[0].url;
+            let components = url.split(/[/?]/);
+            let productSN = components[5] && components[5].includes("ref") ? components[4] : components[5];
+            let trackerLink = "https://keepa.com/#!product/10-" + productSN;
+            brw.windows.create({url: trackerLink, type: "popup", width: 500, height: 500});
+        });
+        sendResponse({status: "success"});
+    }
+});
