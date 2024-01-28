@@ -158,6 +158,7 @@ export class ExtensionPopup extends LitElement {
             <redo-button .activation=${this.initActivation}></redo-button>
             <found-patterns-list .activation=${this.initActivation} .results=${this.results}></found-patterns-list>
             <show-pattern-button .activation=${this.initActivation} .results=${this.results}></show-pattern-button>
+            <supported-patterns-list></supported-patterns-list>
             <popup-footer></popup-footer>
         `;
     }
@@ -593,4 +594,16 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.windows.create({url: "popup/settings.html", type: "popup", width: 500, height: 500});
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    let rupeesButton = document.querySelector('.rupees-button');
+
+    rupeesButton.addEventListener('click', function() {
+        // Send a message to the background script
+        chrome.runtime.sendMessage({message: "open_new_tab"}, function(response) {
+            console.log(response.status);
+        });
+    });
+});
+
+
 
