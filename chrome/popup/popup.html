@@ -4,7 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        .toolbar{
+            margin: 0;
+            padding: 7px;
+            background:rgb(95, 93, 93);
+            font-size: 2em;
+            color:rgb(217, 96, 16);
+        }
+        .toolRibbon{
+            margin: 0;
+            padding: 10px;
+            background:rgb(95, 93, 93);
+        }
+
+        :root {
+            --fill-color: rgb(0, 0, 0);
+        }
+
         body {
             margin: 0;
             padding: 8px;
@@ -12,7 +30,22 @@
             box-sizing: border-box;
             text-align: center;
             font-size: 0.85em;
-            position: relative; /* Add this to position the button absolutely */
+            height: 300px;
+        }
+
+        i {
+            font-size: 60px;
+            color: rgb(81, 225, 177);
+        }
+
+        i:active, i:hover, i.active {
+            color: blue;
+        }
+
+        path {
+            stroke: rgb(251, 251, 251);
+            stroke-width: 10;
+            fill: var(--fill-color);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -22,64 +55,24 @@
             }
         }
 
-        /* Add some basic styling for the buttons */
-        .button-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: row; /* Change this from column to row */
-        }
-
-        .onoff-button{
-            border: none;
-            background: url('images/on-off button.png') no-repeat center center; 
-            background-size: contain;
-            cursor: pointer;
-            font-size: 1.5em;
-            margin-left: 10px; 
-            right : 30px;
-            position: relative;
-            top: 17px; 
-            width: 30px; /* Adjust based on your image's aspect ratio */
-            height: 30px; /* Adjust based on your image's aspect ratio */
-        }
-
-        .settings-button{
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 1.5em;
-            margin-left: 10px; /* Adjust as needed */
-        }
-
-        .rupees-button {
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 1.5em;
-            position: absolute;
-            top: 45px; /* Adjust as needed */
-            right: 18px;
-        }
-
-        .rupees-button {
-            color: #000000; /* Change this to any color you want */
-            background-color: #ffffff;
-        }
     </style>
     <script type="module" src="popup.js"></script>
-    
 </head>
 
 <body>
+    <div id="basicTools" class="toolbar" data-more="c">
+        <span>𝗗𝗽𝗘𝘅</span>
+    </div>
+    <i class='bx bx-power-off' id="power-btn"></i>    
     <extension-popup></extension-popup>
     <!-- Add the buttons inside a container -->
-    <div class="button-container">
-        <button class="onoff-button">🕛</button>
+    <div class="toolRibbon">
         <button class="settings-button">⚙️</button>
     </div>
-    <button class="rupees-button">₹</button>
 </body>
 
 </html>
+
+
+
+  

@@ -163,6 +163,7 @@ export class ExtensionPopup extends LitElement {
         `;
     }
 }
+
 // Define a custom element for the component so that it can be used in the HTML DOM.
 customElements.define("extension-popup", ExtensionPopup);
 
@@ -561,8 +562,6 @@ export class ShowPatternButtons extends LitElement {
 customElements.define("show-pattern-button", ShowPatternButtons);
 
 
-
-
 export class PopupFooter extends LitElement {
     // CSS styles for the HTML elements in the component.
     static styles = [
@@ -586,6 +585,16 @@ export class PopupFooter extends LitElement {
 }
 // Define a custom element for the component so that it can be used in the HTML DOM.
 customElements.define("popup-footer", PopupFooter);
+
+
+document.getElementById('power-btn').addEventListener('click', ()=>{
+    document.getElementById('power-btn').classList.toggle('active');
+    chrome.management.setEnabled(chrome.runtime.id, false, function() {
+        console.log('Extension has been disabled');
+    });
+})
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let settingsButton = document.querySelector('.settings-button');
 
@@ -594,6 +603,8 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.windows.create({url: "popup/settings.html", type: "popup", width: 500, height: 500});
     });
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let rupeesButton = document.querySelector('.rupees-button');
 
@@ -604,6 +615,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
 
