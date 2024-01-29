@@ -1,15 +1,12 @@
-Dark Pattern Recognition
-This web browser extension “DpEx”, is intended to help consumers to navigate the internet in a way similar to an ad blocker. However, the highlighter differs from ad blockers in one crucial aspect: it does not block individual dark patterns on websites but highlights them so that consumers become aware of the influences affecting them. In addition, the tool informs about the type of pattern.
+"DpEx", a browser extension is developed to helps consumers navigate the internet . The extension  highlights the individual dark patterns on websites so that consumers become aware of the influences impact them. The tool provides information regarding the nature of these patterns and allows the user to block the dark patterns if necessary (User's choice).
 
-Additional Features: –
-
-No Blocking of Web Page Content: The extension ensures that it does not block web page content, allowing users to access information while still benefiting from dark pattern detection.
-
-Extension Icon Displaying Number of Detected Dark Patterns: The extension icon dynamically displays the number of detected dark patterns, providing users with a quick visual indicator of potential issues on the webpage.
-
-Function to Individually Highlight Each Detected Dark Pattern: Users have the ability to individually highlight each detected dark pattern out of the 9 famous and profound type of dark patterns.
-
----
+Features:
+- Automatic detection of dark patterns on web pages
+- Highlighting of suspicious elements with minimal impact on page appearance
+- Provides information on detected dark patterns, including their category
+- Blocking of web page content based on user's choice
+- Display's number of detected dark pattern
+- Able to individually highlight each detected pattern
 
 Installation Instructions
 
@@ -38,7 +35,6 @@ Visit the Extensions page by typing opera://extensions in a new tab, or utilize 
 Tech Stack Used:-
 
 1. Web Extension- HTML, CSS, JS
-2. Hardware: 16 GB RAM, Intel i5 12th gen 512 SSD, Windows OS/ MAC OS- M2 pro
-3. IDE- VS code
-4. Dataset Information: The dataset.tsv file located in this directory serves as the dataset for automatically detecting text-based dark patterns.
-5. Scraping Section: This directory contains the code designed to gather non-dark pattern texts for inclusion in the dataset.
+2. IDE- VS code
+3. Dataset Information: The dataset.tsv file located in this directory serves as the dataset for automatically detecting text-based dark patterns.
+4. Scraping Section: This directory contains the code designed to gather non-dark pattern texts for inclusion in the dataset.
