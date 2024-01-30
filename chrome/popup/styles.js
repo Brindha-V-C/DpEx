@@ -68,3 +68,4 @@ export const patternsListStyles = css`
         margin: 10px 0;
     }
 `;
+

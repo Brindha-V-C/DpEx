@@ -550,9 +550,9 @@ export class ShowPatternButtons extends LitElement {
         return html`
         <div>
             <h2>${brw.i18n.getMessage("headingShowPattern")}</h2>
-            <span class="button" @click=${this.showPreviousPattern}>⏮️</span>
+            <span class="button" @click=${this.showPreviousPattern} style="color: rgb(173, 216, 230);">◀</span>
             <span>${brw.i18n.getMessage("showPatternState", [this.getCurrentPatternNumber(), this.results.countVisible])}</span>
-            <span class="button" @click=${this.showNextPattern}>⏭️</span>
+            <span class="button" @click=${this.showNextPattern} style="color: rgb(173, 216, 230);">▶</span>
             ${this.getCurrentPatternText()}
         </div>
       `;
@@ -594,16 +594,23 @@ document.getElementById('power-btn').addEventListener('click', ()=>{
     });
 })
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    let settingsButton = document.querySelector('.settings-button');
-
-    settingsButton.addEventListener('click', function() {
-        // Open the settings page in a new popup window
-        chrome.windows.create({url: "popup/settings.html", type: "popup", width: 500, height: 500});
+document.getElementById("block-btn").addEventListener("click", function() {
+    document.getElementById('block-btn').classList.toggle('active');
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: "toggleElementsVisibility"});
     });
 });
 
+document.getElementById('report-btn').addEventListener('click', ()=>{
+    document.getElementById('report-btn').classList.toggle('active');
+    chrome.tabs.create({url: "popup/report.html"});
+});
+
+
+document.getElementById('info-btn').addEventListener('click', ()=>{
+    document.getElementById('info-btn').classList.toggle('active');
+    chrome.tabs.create({url: "popup/info.html"});
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     let rupeesButton = document.querySelector('.rupees-button');
