@@ -26,7 +26,8 @@
     "permissions": [
         "activeTab",
         "tabs",
-        "storage"
+        "storage",
+        "management"
     ],
     "action": {
         "default_popup": "popup/popup.html"
