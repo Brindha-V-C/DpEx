@@ -147,7 +147,7 @@ export const patternConfig = {
                     // The previous state of the element is not used.
                     // Example: "10 pieces available"
                     //          "99% claimed"
-                    return /\d+\s*(?:\%|pieces?|pcs\.?|pc\.?|ct\.?|items?)?\s*(?:available|sold|claimed|redeemed)|(?:last|final)\s*(?:article|item)/i.test(node.innerText);
+                    return /\d+\s*(?:\%|pieces?|pcs\.?|pc\.?|ct\.?|items?)?\s*(?:left|sold|claimed|redeemed|Ends in)|(?:last|final)\s*(?:article|item)/i.test(node.innerText);
                 }
             ],
             infoUrl: brw.i18n.getMessage("patternScarcity_infoUrl"),

@@ -441,3 +441,38 @@ function showElement(phid) {
     // Add the shadow element to the DOM.
     document.body.appendChild(highlightShadowElem);
 }
+
+let elementsHidden = false; // Variable to track the state of elements
+
+function makeElementsInvisible() {
+    document.querySelectorAll("." + constants.patternDetectedClassName).forEach(
+        function (node) {
+            if (elementIsVisible(node)) {
+                node.style.display = "none";
+            }
+        }
+    );
+    elementsHidden = true;
+}
+
+function restoreElements() {
+    document.querySelectorAll("." + constants.patternDetectedClassName).forEach(
+        function (node) {
+            // Restore the original visibility
+            node.style.display = "";
+        }
+    );
+    elementsHidden = false;
+}
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.action === "toggleElementsVisibility") {
+            if (elementsHidden) {
+                restoreElements();
+            } else {
+                makeElementsInvisible();
+            }
+        }
+    }
+);
